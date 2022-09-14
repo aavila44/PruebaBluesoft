@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PruebasDesarrollo
+namespace PruebaBluesoft
 {
     class Program
     {
