@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PruebaBluesoft    
+namespace PruebaBluesoft
 {
     class Array
     {
@@ -12,6 +12,7 @@ namespace PruebaBluesoft
             int[] listaNumerosAux = new int[listaNumeros.Length];
             var tamaño = listaNumeros.Length;
             int m = 0;
+            var movientosEfectivos = m % listaNumeros.Length;
 
             Console.WriteLine($"El arreglo actual es: " + string.Join(", ", listaNumeros));
             try
@@ -24,23 +25,41 @@ namespace PruebaBluesoft
                 Console.WriteLine($"WARNING: Dato invalido, solo se permiten numeros enteros, intetelo de nuevo");
                 Environment.Exit(0);
             }
-            var movientosEfectivos = m % listaNumeros.Length;
-            if (m == 0 || movientosEfectivos == 0)
+
+            if (this.movientosEfectivoss(m, tamaño) == true)
             {
                 Console.WriteLine($"El arreglo toma su posicion original:" + string.Join(", ", listaNumeros));
                 Environment.Exit(0);
             }
+            movientosEfectivos = m % tamaño;
             Console.Write($"El nuevo arreglo es: ");
-            for (int i = 0; i <= listaNumeros.Length - 1; i++)
+            Console.WriteLine(string.Join(", ", arregloFinal(tamaño, movientosEfectivos, listaNumerosAux, listaNumeros)));
+        }
+        public bool movientosEfectivoss(int m, int movientosEfectivos)
+        {
+            if (m == 0 || movientosEfectivos == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public int[] arregloFinal(int tamaño, int movientosEfectivos, int[] listaNumerosAux, int[] listaNumeros)
+        {
+            for (int i = 0; i <= tamaño - 1; i++)
             {
                 var nuevoIndice = i + movientosEfectivos;
-                if (nuevoIndice >= listaNumeros.Length)
+                if (nuevoIndice >= tamaño)
                 {
                     nuevoIndice = nuevoIndice - tamaño;
                 }
                 listaNumerosAux[nuevoIndice] = listaNumeros[i];
+
+                
             }
-            Console.WriteLine(string.Join(", ", listaNumerosAux));
+            return listaNumerosAux;
         }
     }
 }
