@@ -6,7 +6,7 @@ namespace PruebaBluesoft
     {
         static void Main(string[] args)
         {
-            Array array = new Array();
+            ArrayService array = new ArrayService();
 
             array.rotarElementos();
         }
